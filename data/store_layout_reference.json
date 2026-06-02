@@ -1,0 +1,34 @@
+{
+    "STORE_BLR_002": {
+      "layout_files": {
+        "store_1": "Store 1 - layout.png",
+        "store_2": "store 2 - layout.png"
+      },
+      "layout_usage": "The layout PNGs were used as visual references to understand store structure, customer-facing FOH area, entrance position, billing/cash counter location, and product display zones.",
+      "runtime_zone_file": "data/camera_zones.json",
+      "runtime_note": "The detection pipeline does not run inference directly on the layout PNGs. YOLO runs on CCTV video frames. Zone detection uses CCTV frame coordinates configured in camera_zones.json.",
+      "mapped_zones": {
+        "ENTRY_ZONE": "Entrance and entry-facing customer movement region",
+        "MAIN_FLOOR": "FOH customer browsing and product display area",
+        "BILLING": "Cash counter and billing queue area"
+      },
+      "camera_mapping": {
+        "CAM_ENTRY_01": {
+          "video": "CAM 3 - entry.mp4",
+          "layout_interpretation": "Entrance-facing camera used for entry, exit, and entry-zone movement"
+        },
+        "CAM_ZONE_01": {
+          "video": "CAM 1 - zone.mp4",
+          "layout_interpretation": "FOH/main-floor camera covering browsing and partial billing overlap"
+        },
+        "CAM_ZONE_02": {
+          "video": "CAM 2 - zone.mp4",
+          "layout_interpretation": "Second FOH/main-floor camera covering product display movement and dwell"
+        },
+        "CAM_BILLING_01": {
+          "video": "CAM 5 - billing.mp4",
+          "layout_interpretation": "Billing camera focused on cash counter and billing queue region"
+        }
+      }
+    }
+  }

@@ -1,0 +1,33 @@
+{
+    "CAM_ENTRY_01": {
+      "entry_line_y": 540,
+      "zones": {
+        "ENTRY_ZONE": [0, 0, 1920, 350],
+        "MAIN_FLOOR": [0, 350, 1920, 1080]
+      }
+    },
+    "CAM_ZONE_01": {
+      "entry_line_y": 540,
+      "zones": {
+        "ENTRY_ZONE": [0, 0, 1920, 350],
+        "MAIN_FLOOR": [0, 350, 1200, 1080],
+        "BILLING": [1200, 350, 1920, 1080]
+      }
+    },
+    "CAM_ZONE_02": {
+      "entry_line_y": 540,
+      "zones": {
+        "ENTRY_ZONE": [0, 0, 1920, 350],
+        "MAIN_FLOOR": [0, 350, 1200, 1080],
+        "BILLING": [1200, 350, 1920, 1080]
+      }
+    },
+    "CAM_BILLING_01": {
+      "entry_line_y": 540,
+      "zones": {
+        "ENTRY_ZONE": [0, 0, 1920, 200],
+        "BILLING": [0, 200, 700, 1080],
+        "MAIN_FLOOR": [700, 200, 1920, 1080]
+      }
+    }
+  }
