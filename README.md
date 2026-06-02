@@ -85,6 +85,7 @@ A separate reference file, `data/store_layout_reference.json`, documents how the
 - `MAIN_FLOOR`: FOH customer browsing and product display area
 - `BILLING`: cash counter and billing queue region
 
+
 ## Setup
 
 Create and activate a virtual environment:
@@ -93,14 +94,6 @@ Create and activate a virtual environment:
 python -m venv venv
 source venv/bin/activate
 ```
-## Docker Note
-
-The project includes a `Dockerfile` and `docker-compose.yml` for containerized API startup.
-
-To run with Docker:
-
-```bash
-docker compose up --build
 
 Install dependencies:
 
@@ -108,7 +101,7 @@ Install dependencies:
 pip install -r requirements.txt
 ```
 
-Start the API:
+Start the API locally:
 
 ```bash
 uvicorn app.main:app --reload
@@ -125,6 +118,29 @@ Swagger documentation:
 ```text
 http://127.0.0.1:8000/docs
 ```
+
+## Docker
+
+The project includes Docker support through `Dockerfile` and `docker-compose.yml`.
+
+To run the API with Docker:
+
+```bash
+docker compose up --build
+```
+
+This starts the FastAPI service on:
+
+```text
+http://127.0.0.1:8000
+```
+
+If Docker is not installed locally, install Docker Desktop first. The API can still be run locally without Docker using:
+
+```bash
+uvicorn app.main:app --reload
+```
+
 
 ## Running the Detection Pipeline
 
