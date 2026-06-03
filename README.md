@@ -168,6 +168,7 @@ python -m pipeline.detect --video "local_videos/CAM 5 - billing.mp4" --output da
 
 ## Combining Events
 
+
 Combine all generated detection events:
 
 ```bash
@@ -199,6 +200,12 @@ Then send events:
 ```bash
 python -m pipeline.send_events --events data/final_events_with_purchases.jsonl
 ```
+## Edge-Case Enrichment
+
+After combining detection events and purchase events, run the enrichment step:
+
+```bash
+python -m pipeline.enrich_events
 
 ## API Endpoints
 
