@@ -263,18 +263,25 @@ Returns service status, database connectivity, and last event timestamp per stor
 
 ## Dashboard
 
+The project includes a Streamlit dashboard for the live dashboard bonus. The dashboard reads data from the FastAPI backend, so start the API first.
+
+Start the FastAPI API:
+
+```bash
+uvicorn app.main:app --reload
+```
+
 Run the dashboard:
 
 ```bash
 streamlit run dashboard/streamlit_app.py
 ```
+
 The dashboard will be available at:
 
 ```text
 http://localhost:8501
-
-```md
-Start the FastAPI API before running the dashboard because the dashboard reads from the live API endpoints.
+```
 
 The dashboard shows:
 
@@ -287,6 +294,7 @@ The dashboard shows:
 * Heatmap
 * Anomalies
 * Health status
+
 
 ## Current Verified Output
 
