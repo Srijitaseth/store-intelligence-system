@@ -1,6 +1,10 @@
+import json
 import time
-from fastapi import FastAPI, Depends
+import uuid
+
+from fastapi import FastAPI, Depends, Request
 from sqlalchemy.orm import Session
+
 from app.database import create_tables, get_db
 from app.models import IngestRequest
 from app.ingestion import save_event
@@ -10,12 +14,42 @@ from app.heatmap import get_store_heatmap
 from app.anomalies import get_store_anomalies
 from app.health import get_health
 
+
 app = FastAPI(title="Store Intelligence API")
 
 
 @app.on_event("startup")
 def startup_event():
     create_tables()
+
+
+@app.middleware("http")
+async def structured_logging_middleware(request: Request, call_next):
+    start_time = time.time()
+    trace_id = str(uuid.uuid4())
+
+    response = await call_next(request)
+
+    latency_ms = round((time.time() - start_time) * 1000, 2)
+
+    store_id = request.path_params.get("store_id") or request.path_params.get("id")
+    event_count = None
+
+    log_record = {
+        "trace_id": trace_id,
+        "store_id": store_id,
+        "endpoint": request.url.path,
+        "method": request.method,
+        "latency_ms": latency_ms,
+        "event_count": event_count,
+        "status_code": response.status_code
+    }
+
+    print(json.dumps(log_record))
+
+    response.headers["X-Trace-Id"] = trace_id
+
+    return response
 
 
 @app.post("/events/ingest")

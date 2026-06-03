@@ -13,6 +13,7 @@ def get_store_metrics(db: Session, store_id: str):
 
     unique_visitors = set()
     converted_visitors = set()
+    billing_visitors = set()
     zone_dwell = {}
     latest_queue_depth = 0
 
@@ -20,7 +21,10 @@ def get_store_metrics(db: Session, store_id: str):
         unique_visitors.add(event.visitor_id)
 
         if event.event_type == "PURCHASE":
-          converted_visitors.add(event.visitor_id)
+            converted_visitors.add(event.visitor_id)
+
+        if event.event_type == "BILLING_QUEUE_JOIN":
+            billing_visitors.add(event.visitor_id)
 
         if event.zone_id and event.dwell_ms > 0:
             if event.zone_id not in zone_dwell:
@@ -46,11 +50,20 @@ def get_store_metrics(db: Session, store_id: str):
     else:
         conversion_rate = len(converted_visitors) / total_visitors
 
+    billing_visitor_count = len(billing_visitors)
+
+    if billing_visitor_count == 0:
+        abandonment_rate = 0.0
+    else:
+        abandoned_visitors = billing_visitors - converted_visitors
+        abandonment_rate = len(abandoned_visitors) / billing_visitor_count
+
     return {
         "store_id": store_id,
         "unique_visitors": total_visitors,
         "converted_visitors": len(converted_visitors),
         "conversion_rate": round(conversion_rate, 4),
         "avg_dwell_per_zone_ms": avg_dwell_per_zone,
-        "current_queue_depth": latest_queue_depth
+        "current_queue_depth": latest_queue_depth,
+        "abandonment_rate": round(abandonment_rate, 4)
     }
