@@ -268,6 +268,13 @@ Run the dashboard:
 ```bash
 streamlit run dashboard/streamlit_app.py
 ```
+The dashboard will be available at:
+
+```text
+http://localhost:8501
+
+```md
+Start the FastAPI API before running the dashboard because the dashboard reads from the live API endpoints.
 
 The dashboard shows:
 
