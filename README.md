@@ -243,6 +243,9 @@ After combining detection events and purchase events, run the enrichment step:
 
 ```bash
 python -m pipeline.enrich_events
+```
+
+## API Endpoints
 
 ## API Endpoints
 
