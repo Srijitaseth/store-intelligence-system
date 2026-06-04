@@ -1,10 +1,3 @@
-# PROMPT:
-# Generate pytest tests for a FastAPI event ingestion endpoint that accepts store intelligence events,
-# validates payloads, inserts unique events, and treats duplicate event_id values idempotently.
-#
-# CHANGES MADE:
-# Simplified the generated tests to focus on the challenge requirements: successful ingest,
-# duplicate handling, and response shape validation.
 
 from fastapi.testclient import TestClient
 from app.main import app

@@ -1,3 +1,27 @@
+## Final Submission Deliverables
+
+This repository includes all mandatory HackerEarth submission deliverables:
+
+| Deliverable      | Location                            | Status   |
+| ---------------- | ----------------------------------- | -------- |
+| Event log file   | `data/submission/events.jsonl`      | Included |
+| README           | `README.md`                         | Included |
+| Design document  | `DESIGN.md`                         | Included |
+| Choices document | `CHOICES.md`                        | Included |
+| Additional docs  | `docs/DESIGN.md`, `docs/CHOICES.md` | Included |
+
+### Event Log File
+
+The final event log file is available at:
+
+```text
+data/submission/events.jsonl
+```
+
+It is generated in valid JSONL format and contains 606 event records. Each line represents one event object and follows the required event schema with fields such as `event_id`, `store_id`, `camera_id`, `visitor_id`, `event_type`, `timestamp`, `zone_id`, `dwell_ms`, `is_staff`, `confidence`, and `metadata`.
+
+The file was validated using JSON parsing and schema field checks before submission.
+
 # Store Intelligence System
 
 This project is an AI-powered Store Intelligence System built for the Purplle Tech Challenge 2026 Round 2.

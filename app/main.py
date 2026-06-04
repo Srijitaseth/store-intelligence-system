@@ -21,6 +21,14 @@ app = FastAPI(title="Store Intelligence API")
 @app.on_event("startup")
 def startup_event():
     create_tables()
+    
+@app.get("/")
+def root():
+    return {
+        "message": "Store Intelligence API is running",
+        "docs": "/docs",
+        "health": "/health"
+    }
 
 
 @app.middleware("http")
