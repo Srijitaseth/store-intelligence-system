@@ -247,8 +247,6 @@ python -m pipeline.enrich_events
 
 ## API Endpoints
 
-## API Endpoints
-
 ### Ingest events
 
 ```text
