@@ -87,16 +87,29 @@ store-intelligence/
 
 ## Important Dataset Note
 
-The CCTV videos, generated JSONL event files, POS CSV, local SQLite database, and YOLO model weights are intentionally excluded from GitHub using `.gitignore`.
+Large runtime artifacts are intentionally excluded from GitHub using `.gitignore`, including CCTV videos, POS CSV files, local SQLite databases, YOLO model weights, and intermediate/generated pipeline outputs.
 
-The evaluator should place the local input files in the expected folders before running the pipeline.
+However, the final HackerEarth submission event log is included in this repository at:
 
-Expected local-only files:
+```text
+data/submission/events.jsonl
+```
+
+This file contains the validated JSONL event output used for evaluation. It has 606 event records, with one JSON object per line, and follows the required event schema.
+
+The following files are local-only inputs required only if the evaluator wants to re-run the full video-processing pipeline:
 
 ```text
 local_videos/
 data/pos_transactions.csv
 ```
+
+For direct evaluation of the submitted output, use:
+
+```text
+data/submission/events.jsonl
+```
+
 ## Store Layout Usage
 
 The provided Store 1 and Store 2 layout PNGs were used as visual references to understand the physical store structure, including the entrance, FOH customer browsing area, product display zones, billing/cash counter area, and BOH region.
